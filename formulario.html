@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="pt-BR"><head>  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Cadastro de Usuário</title></head><body><div class='card' style='border: 2px solid black; padding: 40px;'>
+  <h2>Cadastro de Usuário</h2>
+  <div class='panel' style='border: 1px solid #ccc; padding: 20px;'>
+    <img src='https://lh3.googleusercontent.com/a-/ALV-UjVR7lDGPK3OwV2OXcOJ3eyVuJCrGO2X5Lrk-FpdZlzSB_7OUbg=s75-c' alt='Foto de Perfil' style='width: 100px; border-radius: 50%;'/>
+    <input type='text' value='Leandro' placeholder='Digite seu nome' style='width: 200px;'/>
+    <button style='background-color: blue; color: white; padding: 10px;' onclick="alert('Você clicou no botão Enviar: ' + document.querySelector('input').value)">Enviar</button>
+    <button style='background-color: red; color: white; padding: 10px;' onclick="alert('Você clicou no botão Cancelar ' + document.querySelector('input').value)">Cancelar</button>
+  </div>
+</div>
+<script>function openModal(action) {  alert('Você clicou no botão ' + action + '. Nome: ' + document.querySelector('input').value);}</script></body></html>
