@@ -5,65 +5,56 @@ import java.util.List;
 
 public class AppWithoutComposite {
     public static void main(String[] args) {
-        var botao1 = new Botao("Enviar");
-        var botao2 = new Botao("Cancelar");
-        var imagem = new Imagem("logo.png");
+        var buttons = new ArrayList<Button>();
+        var images = new ArrayList<Image>();
 
-        Formulario formulario = new Formulario();
-        formulario.adicionarBotao(botao1);
-        formulario.adicionarBotao(botao2);
-        formulario.adicionarImagem(imagem);
+        var button1 = new Button("Send");
+        var button2 = new Button("Cancel");
+        var image = new Image("logo.png");
 
-        System.out.println(formulario.renderizar());
+        buttons.add(button1);
+        buttons.add(button2);
+        images.add(image);
+
+        Form form = new Form();
+        System.out.println(form.render(buttons, images));
     }
 }
 
-class Botao {
-    private String texto;
+class Button {
+    private final String text;
 
-    public Botao(String texto) {
-        this.texto = texto;
+    public Button(String text) {
+        this.text = text;
     }
 
-    public String renderizar() {
-        return "<button>" + texto + "</button>";
+    public String renderBtn() {
+        return "<button>" + text + "</button>";
     }
 }
 
-class Imagem {
-    private String src;
+class Image {
+    private final String src;
 
-    public Imagem(String src) {
+    public Image(String src) {
         this.src = src;
     }
 
-    public String renderizar() {
+    public String renderImg() {
         return "<img src='" + src + "' />";
     }
 }
 
-class Formulario {
-    private List<Botao> botoes = new ArrayList<>();
-    private List<Imagem> imagens = new ArrayList<>();
-
-    public void adicionarBotao(Botao botao) {
-        botoes.add(botao);
-    }
-
-    public void adicionarImagem(Imagem imagem) {
-        imagens.add(imagem);
-    }
-
-    public String renderizar() {
+class Form {
+    public String render(List<Button> buttons, List<Image> images) {
         StringBuilder html = new StringBuilder("<form>");
-        for (Botao botao : botoes) {
-            html.append(botao.renderizar());
+        for (Button button : buttons) {
+            html.append(button.renderBtn());
         }
-        for (Imagem imagem : imagens) {
-            html.append(imagem.renderizar());
+        for (Image image : images) {
+            html.append(image.renderImg());
         }
         html.append("</form>");
         return html.toString();
     }
 }
-
